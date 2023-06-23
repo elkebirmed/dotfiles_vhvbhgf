@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# {{ include (joinPath .chezmoi.sourceDir ".chezmoitemplates/scripts-library") }}
+
+# The following line is for ShellCheck to correctly identify the above included library
+true || source ../.chezmoitemplates/scripts-library
+
+readonly wanted_packages=(
+  zsh
+)
+missing_packages=()
+
+for package in "${wanted_packages[@]}"; do
+  if ! is_yum_package_installed "${package}"; then
+    missing_packages+=("${package}")
+  fi
+done
+
+if [[ ${#missing_packages[@]} -gt 0 ]]; then
+  log_task "Installing missing packages with Yum: ${missing_packages[*]}"
+
+  # This script also gets called when running rootmoi
+  # {{ if eq .chezmoi.username "root" }}
+  yum_command=(yum)
+  # {{ else }}
+  yum_command=(sudo yum)
+  # {{ end }}
+
+  c "${yum_command[@]}" install -y "${missing_packages[@]}"
+fi
