@@ -55,25 +55,14 @@
     args: ["-x", "-z", "-O", "kubectx"]
   executable: true
 
-# ".oh-my-zsh/custom/plugins/my-completions/_kubectx.zsh":
-#   type: file
-#   # TODO: switch to get-github-latest-version once a newer version gets released
-#   url: "https://github.com/ahmetb/kubectx/raw/{{ template "get-github-head-revision" list "ahmetb/kubectx" $cache }}/completion/_kubectx.zsh"
+".local/bin/kubens":
+  type: file
+  url: "https://github.com/ahmetb/kubectx/releases/download/v{{ template "get-github-latest-version" list "ahmetb/kubectx" $cache }}/kubens_v{{ template "get-github-latest-version" list "ahmetb/kubectx" $cache }}_linux_{{ .uname_arch }}.tar.gz"
+  filter:
+    command: tar
+    args: ["-x", "-z", "-O", "kubens"]
+  executable: true
 
-# ".local/bin/kubens":
-#   type: file
-#   url: "https://github.com/ahmetb/kubectx/releases/download/v{{ template "get-github-latest-version" list "ahmetb/kubectx" $cache }}/kubens_v{{ template "get-github-latest-version" list "ahmetb/kubectx" $cache }}_linux_{{ .uname_arch }}.tar.gz"
-#   filter:
-#     command: tar
-#     args: ["-x", "-z", "-O", "kubens"]
-#   executable: true
-
-# ".oh-my-zsh/custom/plugins/my-completions/_kubens.zsh":
-#   type: file
-#   # TODO: switch to get-github-latest-version once a newer version gets released
-#   url: "https://github.com/ahmetb/kubectx/raw/{{ template "get-github-head-revision" list "ahmetb/kubectx" $cache }}/completion/_kubens.zsh"
-
-# Required by kubectx and kubens
 ".local/bin/fzf":
   type: file
   url: "https://github.com/junegunn/fzf/releases/download/{{ template "get-github-latest-version" list "junegunn/fzf" $cache }}/fzf-{{ template "get-github-latest-version" list "junegunn/fzf" $cache }}-linux_{{ .chezmoi.arch }}.tar.gz"
@@ -94,7 +83,6 @@
   type: archive
   url: "https://github.com/volta-cli/volta/releases/download/v{{ template "get-github-latest-version" list "volta-cli/volta" $cache }}/volta-{{ template "get-github-latest-version" list "volta-cli/volta" $cache }}-linux.tar.gz"
 
-{{ if not .is_devcontainer -}}
 ".local/bin/skopeo":
   type: file
   url: "https://github.com/felipecrs/skopeo-bin/releases/download/v{{ template "get-github-latest-version" list "felipecrs/skopeo-bin" $cache }}/skopeo.linux-{{ .chezmoi.arch }}"
@@ -107,5 +95,3 @@
     - deno
 
 {{- template "save-versions-and-revisions-cache" $cache -}}
-
-{{- end -}}

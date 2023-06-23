@@ -4,6 +4,7 @@
 # in order to keep the same aliases on both shells. So keep in mind that any
 # code here must be compatible with bash and zsh.
 
+alias docker="podman"
 alias python="python3"
 alias kubectl="kubecolor"
 
@@ -41,7 +42,6 @@ merge-kubeconfigs() {
   KUBECONFIG="$(printf '%s:' "${HOME}"/.kube/*.kubeconfig.yaml | sed 's/:$//')" kubectl config view --flatten | tee "${HOME}/.kube/config"
 }
 
-# {{ if .is_wsl }}
 gsudo() {
   local shell
 
@@ -57,4 +57,3 @@ cdw() {
     win_home=$(wslpath "${user_profile}") &&
     cd "${win_home}"
 }
-# {{ end }}
