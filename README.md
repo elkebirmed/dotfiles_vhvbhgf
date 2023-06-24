@@ -2,10 +2,17 @@
 
 ## WSL (Oracle Linux)
 
-Enable `systemd`:
+Enable `systemd`, open/create `/etc/wsl.conf` for editing:
 
 ```bash
-sudo echo $'[boot]\nsystemd=true' > /etc/wsl.conf
+sudo vim /etc/wsl.conf
+```
+
+Add the following if not exists in it:
+
+```toml
+[boot]
+systemd=true
 ```
 
 Close current session & shutdown `wsl` in powershell:
