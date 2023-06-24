@@ -7,7 +7,7 @@ true || source ../.chezmoitemplates/scripts-library
 
 if ! command -v "docker"; then
   log_task "Installing Docker"
-  sudo yum-config-manager --add-repo -y https://download.docker.com/linux/centos/docker-ce.repo
+  sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
   sudo yum install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
   sudo groupadd -f docker
   sudo usermod -aG docker '{{ .chezmoi.username }}'
