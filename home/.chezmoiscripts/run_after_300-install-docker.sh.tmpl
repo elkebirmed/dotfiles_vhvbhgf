@@ -5,13 +5,12 @@
 # The following line is for ShellCheck to correctly identify the above include
 true || source ../.chezmoitemplates/scripts-library
 
-if ! command -v "docker"; then
+if ! command -v "docker" &>/dev/null; then
   log_task "Installing Docker"
   sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
   sudo yum install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
   sudo groupadd -f docker
   sudo usermod -aG docker '{{ .chezmoi.username }}'
-  newgrp docker
   sudo systemctl enable docker
   sudo systemctl start docker
 fi
