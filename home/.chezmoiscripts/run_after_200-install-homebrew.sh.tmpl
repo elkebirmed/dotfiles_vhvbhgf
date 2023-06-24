@@ -47,17 +47,18 @@ if ! brew --version &>/dev/null; then
 fi
 
 readonly wanted_packages=(
+  bat
   chezmoi
-  yq
-  kubectl
-  helm
-  k3d
   dive
+  exa
+  fd
   gh
   hadolint
+  helm
+  k3d
+  kubectl
   nvim
-  bat
-  exa
+  yq
 )
 
 missing_packages=()

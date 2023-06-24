@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# {{ template "scripts-library" }}
+
+# The following line is for ShellCheck to correctly identify the above include
+true || source ../.chezmoitemplates/scripts-library
+
+if ! command -v rustc &>/dev/null; then
+  log_task "Installing Rust"
+  curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path
+fi

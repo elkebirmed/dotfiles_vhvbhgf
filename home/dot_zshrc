@@ -113,11 +113,13 @@ plugins=(
   helm
   npm
   command-not-found
-  common-aliases
-  ubuntu
   sudo
   zsh-syntax-highlighting
   zsh-autosuggestions
+  fd
+  rust
+  yum
+  z
   #-_- my-completions
   )
 
@@ -125,6 +127,11 @@ plugins=(
 fpath+="${ZSH_CUSTOM:-"${ZSH}/custom"}/plugins/zsh-completions/src"
 
 source "${ZSH}/oh-my-zsh.sh"
+
+# Load zsh aliases
+if [[ -r "${HOME}/.zsh_aliases" ]]; then
+  emulate ksh -c "source '${HOME}/.zsh_aliases'"
+fi
 
 # https://github.com/microsoft/vscode/issues/153400#issue-1286534600
 if [[ "${TERM_PROGRAM}" == "vscode" ]]; then
