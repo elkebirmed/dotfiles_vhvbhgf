@@ -63,14 +63,6 @@
     args: ["-x", "-z", "-O", "kubens"]
   executable: true
 
-".local/bin/fzf":
-  type: file
-  url: "https://github.com/junegunn/fzf/releases/download/{{ template "get-github-latest-version" list "junegunn/fzf" $cache }}/fzf-{{ template "get-github-latest-version" list "junegunn/fzf" $cache }}-linux_{{ .chezmoi.arch }}.tar.gz"
-  filter:
-    command: tar
-    args: ["-x", "-z", "-O", "fzf"]
-  executable: true
-
 ".local/bin/stern":
   type: file
   url: "https://github.com/stern/stern/releases/download/v{{ template "get-github-latest-version" list "stern/stern" $cache }}/stern_{{ template "get-github-latest-version" list "stern/stern" $cache }}_linux_{{ .chezmoi.arch }}.tar.gz"
@@ -93,5 +85,10 @@
   url: "https://github.com/denoland/deno/releases/download/v{{ template "get-github-latest-version" list "denoland/deno" $cache }}/deno-x86_64-unknown-linux-gnu.zip"
   include:
     - deno
+
+".tmux/plugins/tpm":
+  type: "git-repo"
+  url: "https://github.com/tmux-plugins/tpm"
+  refreshPeriod: "168h"
 
 {{- template "save-versions-and-revisions-cache" $cache -}}
