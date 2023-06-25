@@ -14,17 +14,8 @@ if [ -d "${HOME}/.volta/bin" ]; then
   export PATH="${VOLTA_HOME}/bin:${PATH}"
 fi
 
-if [ -d "${HOME}/.deno/bin" ]; then
-  export DENO_INSTALL="${HOME}/.deno"
-  export PATH="${DENO_INSTALL}/bin:${PATH}"
-fi
-
-if [ -f "${HOME}/.cargo/env" ]; then
-  . "${HOME}/.cargo/env"
-fi
-
-if [ -d "${HOME}/go/bin" ]; then
-  export PATH="${HOME}/go/bin:${PATH}"
+if [ -d "${HOME}/.cargo/bin" ]; then
+  export PATH="${HOME}/.cargo/bin:${PATH}"
 fi
 
 if [ -d "${HOME}/bin" ]; then

@@ -1,2 +1,15 @@
-# Old binaries
+# Old installs
 .local/bin/fzf
+.local/bin/direnv
+.local/bin/kubecolor
+.local/bin/kubectx
+.local/bin/kubens
+.local/bin/skopeo
+.local/bin/stern
+.deno
+
+# Old files
+.fzf.zsh
+.bash_aliases
+.zsh_aliases
+.p10k.zsh

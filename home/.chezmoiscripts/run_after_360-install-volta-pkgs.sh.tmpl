@@ -1,27 +1,17 @@
 #!/bin/bash
 
 # {{ template "scripts-library" }}
-# {{ template "volta-library" }}
 
 # The following line is for ShellCheck to correctly identify the above include
 true || source ../.chezmoitemplates/scripts-library
-true || source ../.chezmoitemplates/volta-library
+
+ensure_path_entry "${HOME}/.volta/bin"
 
 function is_volta_package_installed() {
   local package="$1"
 
   volta list --current --quiet --format plain "${package}" | grep --quiet .
 }
-
-readonly unwanted_packages=(
-)
-
-for package in "${unwanted_packages[@]}"; do
-  if is_volta_package_installed "${package}"; then
-    log_task "Removing unwanted packages with Volta: ${missing_packages[*]}"
-    volta uninstall "${package}"
-  fi
-done
 
 readonly wanted_packages=(
   node

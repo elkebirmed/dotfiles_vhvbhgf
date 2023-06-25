@@ -1,7 +1,6 @@
 # shellcheck shell=bash
 
 alias python='python3'
-alias kubectl='kubecolor'
 
 alias ls='exa --icons'                  # just replace ls by exa and allow all other exa arguments
 alias l='exa -lbF --icons'              # list, size, type
@@ -13,6 +12,7 @@ alias lx='exa -lbhHigUmuSa@ --icons'    # all list and extended
 alias tree='exa --tree --icons'         # tree view
 alias lS='exa -1 --icons'               # one column by just names
 
+alias v='nvim'
 alias t='tail -f'
 alias dud='du -d 1 -h'
 alias cat='bat --paging=never'
@@ -33,3 +33,6 @@ alias -g LL="2>&1 | less"
 alias -g CA="2>&1 | cat -A"
 alias -g NE="2> /dev/null"
 alias -g NUL="> /dev/null 2>&1"
+
+# Pretty print the path
+alias path='echo $PATH | tr -s ":" "\n"'

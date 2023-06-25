@@ -7,6 +7,7 @@
 {{- if hasKey . "name" -}}
 {{-   $name = .name -}}
 {{- end -}}
+
 {{- if $interactive -}}
 {{-   range $i := until 99 -}}
 {{-     $question := "❔ What is your full name" -}}
@@ -32,6 +33,7 @@
 {{- if hasKey . "email" -}}
 {{-   $email = .email -}}
 {{- end -}}
+
 {{- if $interactive -}}
 {{-   range $i := until 99 -}}
 {{-     $question := "❔ What is your email" -}}
@@ -76,6 +78,6 @@ data:
   name: "{{ $name }}"
   email: "{{ $email }}"
 
-  editor: "code --wait"
+  editor: "code"
 
   uname_arch: "{{ output "uname" "-m" | trim }}"

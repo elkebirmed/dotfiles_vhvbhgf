@@ -1,11 +1,14 @@
 #!/bin/bash
 
 # {{ template "scripts-library" }}
-# {{ template "homebrew-library" }}
 
 # The following line is for ShellCheck to correctly identify the above include
 true || source ../.chezmoitemplates/scripts-library
-true || source ../.chezmoitemplates/homebrew-library
+
+readonly home_homebrew_prefix="${HOME}/.linuxbrew"
+readonly root_homebrew_prefix="/home/linuxbrew/.linuxbrew"
+
+ensure_path_entry "${home_homebrew_prefix}/bin" "${root_homebrew_prefix}/bin"
 
 function is_root_homebrew_prefix_writable() {
   if [[ -d "${root_homebrew_prefix}" ]]; then
@@ -16,12 +19,6 @@ function is_root_homebrew_prefix_writable() {
   else
     return 1
   fi
-}
-
-function is_brew_package_installed() {
-  local package="$1"
-
-  brew list "${package}" &>/dev/null
 }
 
 if is_root_homebrew_prefix_writable && [[ -d "${home_homebrew_prefix}" ]]; then
@@ -44,38 +41,4 @@ if ! brew --version &>/dev/null; then
     c chmod -R go-w "${homebrew_prefix}/share/zsh"
     unset homebrew_prefix
   fi
-fi
-
-readonly wanted_packages=(
-  asciinema
-  bat
-  chezmoi
-  dive
-  exa
-  fd
-  fzf
-  gh
-  hadolint
-  helm
-  k3d
-  kubectl
-  neofetch
-  nvim
-  ripgrep
-  tmux
-  yq
-  zoxide
-)
-
-missing_packages=()
-
-for package in "${wanted_packages[@]}"; do
-  if ! is_brew_package_installed "${package}"; then
-    missing_packages+=("${package}")
-  fi
-done
-
-if [[ ${#missing_packages[@]} -gt 0 ]]; then
-  log_task "Installing missing packages with Homebrew: ${missing_packages[*]}"
-  brew install --force "${missing_packages[@]}"
 fi

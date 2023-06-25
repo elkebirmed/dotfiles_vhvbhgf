@@ -37,8 +37,6 @@
     "*_antigenrc": "shellscript",
     "*_profile.tmpl": "shellscript",
     "*_bashrc": "shellscript",
-    "*_bash_aliases.tmpl": "shellscript",
-    "*_zsh_aliases.tmpl": "shellscript",
     "**/home/**/run_*": "shellscript",
     "**/home/**/executable_*": "shellscript",
     "**/home/**/modify_*": "helm",
