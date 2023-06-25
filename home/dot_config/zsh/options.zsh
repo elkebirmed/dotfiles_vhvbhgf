@@ -2,10 +2,8 @@
 # -----------------------------------------------------------------------------
 export ZSH="$HOME/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+# Theme
+# -----------------------------------------------------------------------------
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Disable bi-weekly auto-update checks.
@@ -16,11 +14,7 @@ DISABLE_AUTO_UPDATE="true"
 # -----------------------------------------------------------------------------
 DISABLE_MAGIC_FUNCTIONS="true"
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
+# Stamp shown in the history command output.
 # see 'man strftime' for details.
 # -----------------------------------------------------------------------------
 HIST_STAMPS="dd/mm/yyyy"
@@ -29,15 +23,7 @@ HIST_STAMPS="dd/mm/yyyy"
 # -----------------------------------------------------------------------------
 POWERLEVEL9K_CONFIG_FILE="$HOME/.config/zsh/p10k.zsh"
 
-# vi mode
-# -----------------------------------------------------------------------------
-bindkey -v
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
+# Plugins
 # -----------------------------------------------------------------------------
 plugins=(
   git

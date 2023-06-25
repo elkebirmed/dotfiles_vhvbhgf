@@ -1,6 +1,7 @@
 # shellcheck shell=bash
 
 alias python='python3'
+alias lzd='lazydocker'
 
 alias ls='exa --icons'                  # just replace ls by exa and allow all other exa arguments
 alias l='exa -lbF --icons'              # list, size, type
