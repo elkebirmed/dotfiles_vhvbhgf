@@ -87,6 +87,10 @@ fi
 # -----------------------------------------------------------------------------
 eval "$(zoxide init zsh)"
 
+# Init Tmuxifier
+# -----------------------------------------------------------------------------
+eval "$(tmuxifier init -)"
+
 # initialize autocomplete here, otherwise functions won't be loaded
 # -----------------------------------------------------------------------------
 autoload -U compinit

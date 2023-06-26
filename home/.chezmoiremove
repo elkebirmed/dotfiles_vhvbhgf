@@ -13,3 +13,4 @@
 .bash_aliases
 .zsh_aliases
 .p10k.zsh
+.tmux

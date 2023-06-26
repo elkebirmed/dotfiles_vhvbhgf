@@ -2,6 +2,8 @@
 
 alias python='python3'
 alias lzd='lazydocker'
+alias tmxf='tmuxifier'
+alias chz='chezmoi'
 
 alias ls='exa --icons'                  # just replace ls by exa and allow all other exa arguments
 alias l='exa -lbF --icons'              # list, size, type
